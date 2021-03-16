@@ -232,7 +232,7 @@ public class DialogWindow
                         newDirectory = new File(MyData.getPath());
                         if ((MyData.getPath() != "") && (newDirectory.isDirectory() == true))
                         {
-                            SolveTask4 solveTask4 = new SolveTask4(MyData.getPath());
+                            SolveTask4 solveTask4 = new SolveTask4(MyData.getPath(), textField_4.getText());
                             solveTask4 = null;
 //                            JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">В директории<br>" + MyData.getPath() + "<br>создан файл unionInformation.txt с информацией из файлов: task1_file1.txt и task1_file1.txt</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
                         }

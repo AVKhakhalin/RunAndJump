@@ -9,12 +9,14 @@ import java.nio.file.Files;
 public class SolveTask4
 {
     String dirPath;
+    String wordToSearch;
 
-    SolveTask4(String _dirPath)
+    SolveTask4(String _dirPath, String _wordToSearch)
     {
         this.dirPath = _dirPath;
+        this.wordToSearch = _wordToSearch;
 
-        String separators = "[ ,.!?;:\\-+_#*/\"]";
+        String separators = "[ ,.!?;:\\-+_#*/\"«»<>{}]";
         File checkDir = new File(dirPath);
         if (!checkDir.exists())
         {
@@ -25,55 +27,80 @@ public class SolveTask4
             // Поиск в директории всех файлов
             File curDir = new File(dirPath);
             File[] existFiles = readFilesFromDir(curDir, false);
-            // Считывание информации из файла
-/*            try (FileInputStream fileReader = new FileInputStream(filePath))
+
+            // Считывание информации из найденных файлов
+            byte[] buffer;
+            String result;
+            String[] fileWords;
+            String fullBuffer;
+            String otchet = "";
+            int numberFoundedWords;
+            int numberFoundedFilesWithWord = 0;
+            if (existFiles != null)
             {
-                byte[] buffer = new byte[fileReader.available()];
-                fileReader.read(buffer, 0, buffer.length);
-                String fullBuffer = new String(buffer);
-                String[] fileWords = fullBuffer.split(separators);
-                String result = "";
-                int numberFoundedWords = 0;
-                for (int i = 0; i < fileWords.length; i++)
+                for (File curFile : existFiles)
                 {
-                    System.out.println(fileWords[i]);
-                    if (fileWords[i].equals(wordToSearch) == true)
+                    try (FileInputStream fileReader = new FileInputStream(curFile))
                     {
-                        if (result.length() == 0)
+                        buffer = new byte[fileReader.available()];
+                        fileReader.read(buffer, 0, buffer.length);
+                        fullBuffer = new String(buffer);
+                        fileWords = fullBuffer.split(separators);
+                        result = "";
+                        numberFoundedWords = 0;
+                        for (int i = 0; i < fileWords.length; i++)
                         {
-                            result += (i + 1);
-                            numberFoundedWords++;
+                            if (fileWords[i].equals(wordToSearch) == true)
+                            {
+                                if (result.length() == 0)
+                                {
+                                    result += (i + 1);
+                                    numberFoundedWords++;
+                                }
+                                else
+                                {
+                                    result += "," + (i + 1);
+                                    numberFoundedWords++;
+                                }
+                            }
                         }
-                        else
+                        if ((result.length() != 0) && (otchet.length() == 0))
                         {
-                            result += "," + (i + 1);
-                            numberFoundedWords++;
+                            numberFoundedFilesWithWord++;
+                            otchet = "В директории " + dirPath + "\nнайдены следующие файлы со словом " + wordToSearch + ":";
+                            otchet += "\n" + numberFoundedFilesWithWord + ". В файле " + curFile.getAbsolutePath() + " слово \"" + wordToSearch + "\" присутствует " + (numberFoundedWords == 1 ? "на позиции " : "на позициях: ") + result + ".";
+                        }
+                        else if (result.length() != 0)
+                        {
+                            numberFoundedFilesWithWord++;
+                            otchet += "\n" + numberFoundedFilesWithWord + ". В файле " + curFile.getAbsolutePath() + " слово \"" + wordToSearch + "\" присутствует " + (numberFoundedWords == 1 ? "на позиции " : "на позициях: ") + result + ".";
                         }
                     }
-                }
-                if (result.length() == 0)
-                {
-                    System.out.println("В файле " + filePath + "\nнет слова " + wordToSearch + ".");
-                    JOptionPane.showMessageDialog(new JFrame(),"В файле " + filePath + "\nнет слова " + wordToSearch + ".", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
-                }
-                else
-                {
-                    System.out.println("В файле " + filePath + "\nслово " + wordToSearch + " присутствует " + (numberFoundedWords == 1 ? "на позиции " : "на позициях: ") + result + ".");
-                    JOptionPane.showMessageDialog(new JFrame(),"В файле " + filePath + "\nслово " + wordToSearch + " присутствует " + (numberFoundedWords == 1 ? "на позиции " : "на позициях: ") + result + ".", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
+                    catch (Exception e)
+                    {
+                        System.out.println(e.getMessage());
+                        JOptionPane.showMessageDialog(new JFrame(), "Невозможно открыть файл " + curFile + ".", "ОШИБКА", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
-            catch (Exception e)
+            if (otchet.length() == 0)
             {
-                System.out.println(e.getMessage());
-                JOptionPane.showMessageDialog(new JFrame(), "Невозможно открыть файл " + filePath + ".", "ОШИБКА", JOptionPane.ERROR_MESSAGE);
+                System.out.println("В директории " + dirPath + " нет файлов, содержащих слово \"" + wordToSearch + "\".");
+                JOptionPane.showMessageDialog(new JFrame(), "В директории " + dirPath + " нет файлов, содержащих слово \"" + wordToSearch + "\".", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
             }
-
- */
+            else
+            {
+                System.out.println(otchet);
+                JOptionPane.showMessageDialog(new JFrame(), otchet, "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
     }
 
     public File[] readFilesFromDir(File dir, boolean lastDirectory)
     {
+        int counter1;
+        int counter2;
+        int counter3;
         File[] tempListFiles = null;
         File[] allFoundedFiles = null;
 
@@ -84,15 +111,35 @@ public class SolveTask4
         }
 
         int subDirTotal = 0;
-        for (int i = 0; i < files.length; i++)
+        for (counter1 = 0; counter1 < files.length; counter1++)
         {
-            if (files[i].isDirectory() == true)
+            if (files[counter1].isDirectory() == true)
             {
                 subDirTotal++;
             }
             else
             {
-
+                // Получения списка файлов из текущей директории
+                if (allFoundedFiles == null)
+                {
+                    counter3 = 0;
+                }
+                else
+                {
+                    counter3 = allFoundedFiles.length;
+                }
+                tempListFiles = new File[counter3 + 1];
+                for (counter2 = 0; counter2 < counter3; counter2++)
+                {
+                    tempListFiles[counter2] = allFoundedFiles[counter2];
+                }
+                tempListFiles[counter3] = files[counter1];
+                allFoundedFiles = null;
+                allFoundedFiles = new File[counter2 + 1];
+                for (counter2 = 0; counter2 < allFoundedFiles.length; counter2++)
+                {
+                    allFoundedFiles[counter2] = tempListFiles[counter2];
+                }
             }
         }
 
@@ -103,10 +150,35 @@ public class SolveTask4
             if (files[i].isDirectory() == true)
             {
                 subDirCounter++;
-                readFilesFromDir(files[i], subDirTotal == subDirCounter);
+                File[] tempListSubdirFiles = readFilesFromDir(files[i], subDirTotal == subDirCounter);
+                if (tempListSubdirFiles != null)
+                {
+                    if (allFoundedFiles == null)
+                    {
+                        counter3 = 0;
+                    }
+                    else
+                    {
+                        counter3 = allFoundedFiles.length;
+                    }
+                    tempListFiles = new File[counter3 + tempListSubdirFiles.length];
+                    for (counter2 = 0; counter2 < counter3; counter2++)
+                    {
+                        tempListFiles[counter2] = allFoundedFiles[counter2];
+                    }
+                    for (counter1 = 0; counter1 < tempListSubdirFiles.length; counter1++)
+                    {
+                        tempListFiles[counter2++] = tempListSubdirFiles[counter1];
+                    }
+                    allFoundedFiles = null;
+                    allFoundedFiles = new File[tempListFiles.length];
+                    for (counter2 = 0; counter2 < allFoundedFiles.length; counter2++)
+                    {
+                        allFoundedFiles[counter2] = tempListFiles[counter2];
+                    }
+                }
             }
         }
-
         return allFoundedFiles;
     }
 }

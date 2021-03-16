@@ -33,7 +33,7 @@ public class SolveTask3
                 // Считывание информации из файла
                 try (FileInputStream fileReader = new FileInputStream(filePath))
                 {
-                    String separators = "[ ,.!?;:\\-+_#*/\"]";
+                    String separators = "[ ,.!?;:\\-+_#*/\"«»<>{}]";
                     byte[] buffer = new byte[fileReader.available()];
                     fileReader.read(buffer, 0, buffer.length);
                     String fullBuffer = new String(buffer);
@@ -42,7 +42,6 @@ public class SolveTask3
                     int numberFoundedWords = 0;
                     for (int i = 0; i < fileWords.length; i++)
                     {
-                        System.out.println(fileWords[i]);
                         if (fileWords[i].equals(wordToSearch) == true)
                         {
                             if (result.length() == 0)
@@ -59,12 +58,12 @@ public class SolveTask3
                     }
                     if (result.length() == 0)
                     {
-                        System.out.println("В файле " + filePath + "\nнет слова " + wordToSearch + ".");
-                        JOptionPane.showMessageDialog(new JFrame(),"В файле " + filePath + "\nнет слова " + wordToSearch + ".", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
+                        System.out.println("В файле " + filePath + "\nнет слова \"" + wordToSearch + "\".");
+                        JOptionPane.showMessageDialog(new JFrame(),"В файле " + filePath + "\nнет слова \"" + wordToSearch + "\".", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
                     }
                     else
                     {
-                        System.out.println("В файле " + filePath + "\nслово " + wordToSearch + " присутствует " + (numberFoundedWords == 1 ? "на позиции " : "на позициях: ") + result + ".");
+                        System.out.println("В файле " + filePath + "\nслово \"" + wordToSearch + "\" присутствует " + (numberFoundedWords == 1 ? "на позиции " : "на позициях: ") + result + ".");
                         JOptionPane.showMessageDialog(new JFrame(),"В файле " + filePath + "\nслово " + wordToSearch + " присутствует " + (numberFoundedWords == 1 ? "на позиции " : "на позициях: ") + result + ".", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
