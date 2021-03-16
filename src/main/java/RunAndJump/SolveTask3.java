@@ -7,58 +7,71 @@ import java.io.FileOutputStream;
 
 public class SolveTask3
 {
-    String dirPath;
+    String filePath;
+    String wordToSearch;
 
-    SolveTask3(String _dirPath)
+    SolveTask3(String _filePath, String _wordToSearch)
     {
-        this.dirPath = _dirPath;
+        this.filePath = _filePath;
+        this.wordToSearch = _wordToSearch;
 
-        File file = new File(dirPath);
-        SolveTask1 solveTask;
-        if (!file.exists())
+        if ((wordToSearch == null) || (wordToSearch.isEmpty() == true))
         {
-            JOptionPane.showMessageDialog(new JFrame(), "Директория не существует. Пожалуйста, укажите существующую директорию.", "ОШИБКА!", JOptionPane.ERROR_MESSAGE);
+            System.out.println("ОШИБКА: Слово для поиска не задано. Нужно обязательно ввести слово для поиска. Попробуйте ещё раз.");
+            JOptionPane.showMessageDialog(new JFrame(), "Слово для поиска не задано. Нужно обязательно ввести слово для поиска. Попробуйте ещё раз.", "ОШИБКА!", JOptionPane.ERROR_MESSAGE);
         }
         else
         {
-            for (int i = 1; i <= 2; i++)
+            File file = new File(filePath);
+            if (!file.exists())
             {
-                file = new File(dirPath + "\\task1_file" + i + ".txt");
-                if (!file.exists())
-                {
-                    solveTask = new SolveTask1(dirPath + "\\task1_file" + i + ".txt", i);
-                }
+                System.out.println("ОШИБКА: Файл не существует. Пожалуйста, укажите существующий файл.");
+                JOptionPane.showMessageDialog(new JFrame(), "Файл не существует. Пожалуйста, укажите существующий файл.", "ОШИБКА!", JOptionPane.ERROR_MESSAGE);
             }
-            // Проверка наличия файла unionInformation.txt в указанной папке. Если он есть, то удаляем его
-            File fileDelete = new File(dirPath + "\\unionInformation.txt");
-            if (fileDelete.exists())
+            else
             {
-                if (fileDelete.delete())
+                // Считывание информации из файла
+                try (FileInputStream fileReader = new FileInputStream(filePath))
                 {
-                    // Удаление файла успешно произведено
-                }
-                else
-                {
-                    System.out.println("В указанной директории уже существует файл \"unionInformation.txt\". Удалить его не получается.");
-                    JOptionPane.showMessageDialog(new JFrame(), "В указанной директории уже существует файл unionInformation.txt. Удалить его не получается.", "ОШИБКА", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-
-            // Объединение информации в два файла
-            for (int i = 1; i <= 2; i++)
-            {
-                try (FileOutputStream fileWriter = new FileOutputStream(dirPath + "\\unionInformation.txt", true); FileInputStream fileReader = new FileInputStream(dirPath + "\\task1_file" + i + ".txt"))
-                {
+                    String separators = "[ ,.!?;:\\-+_#*/\"]";
                     byte[] buffer = new byte[fileReader.available()];
                     fileReader.read(buffer, 0, buffer.length);
-                    fileWriter.write(buffer, 0, buffer.length);
-                    fileReader.close();
-                    fileWriter.close();
+                    String fullBuffer = new String(buffer);
+                    String[] fileWords = fullBuffer.split(separators);
+                    String result = "";
+                    int numberFoundedWords = 0;
+                    for (int i = 0; i < fileWords.length; i++)
+                    {
+                        System.out.println(fileWords[i]);
+                        if (fileWords[i].equals(wordToSearch) == true)
+                        {
+                            if (result.length() == 0)
+                            {
+                                result += (i + 1);
+                                numberFoundedWords++;
+                            }
+                            else
+                            {
+                                result += "," + (i + 1);
+                                numberFoundedWords++;
+                            }
+                        }
+                    }
+                    if (result.length() == 0)
+                    {
+                        System.out.println("В файле " + filePath + "\nнет слова " + wordToSearch + ".");
+                        JOptionPane.showMessageDialog(new JFrame(),"В файле " + filePath + "\nнет слова " + wordToSearch + ".", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                    else
+                    {
+                        System.out.println("В файле " + filePath + "\nслово " + wordToSearch + " присутствует " + (numberFoundedWords == 1 ? "на позиции " : "на позициях: ") + result + ".");
+                        JOptionPane.showMessageDialog(new JFrame(),"В файле " + filePath + "\nслово " + wordToSearch + " присутствует " + (numberFoundedWords == 1 ? "на позиции " : "на позициях: ") + result + ".", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
+                    }
                 }
                 catch (Exception e)
                 {
                     System.out.println(e.getMessage());
-                    JOptionPane.showMessageDialog(new JFrame(), "Невозможно открыть файл " + (dirPath + "\\task1_file" + i + ".txt") + " или создать для записи файл " + (dirPath + "\\unionInformation.txt") + ".", "ОШИБКА", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(new JFrame(), "Невозможно открыть файл " + filePath + ".", "ОШИБКА", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }

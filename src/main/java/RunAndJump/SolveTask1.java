@@ -31,22 +31,43 @@ public class SolveTask1
             "Когда он покинул свет,\n" +
             "Мыслям моим в ответ\n" +
             "Промолвил: «Мы выпить должны за того,\n" +
-            "Кого еще с нами нет».",
+            "Кого еще с нами нет».\n\n",
 
-            "Анна Андреевна Ахматова \"Памяти 19 июля 1914\"\n" +
-            "Тогда случилось в час один:\n" +
-            "Короткое уже кончалось лето,\n" +
-            "Дымилось тело вспаханных равнин.\n" +
-            "\n" +
-            "Вдруг запестрела тихая дорога,\n" +
-            "Плач полетел, серебряно звеня…\n" +
-            "Закрыв лицо, я умоляла Бога\n" +
-            "До первой битвы умертвить меня.\n" +
-            "\n" +
-            "Из памяти, как груз отныне лишний,\n" +
-            "Исчезли тени песен и страстей.\n" +
-            "Ей — опустевшей — приказал Всевышний\n" +
-            "Стать страшной книгой грозовых вестей."};
+            "Anna Andreevna Akhmatova \"Escape\" June 1914\n" +
+            "My dear, if we could only\n" +
+            "Reach all the way to the seas\n" +
+            "\"Be quiet\" and descended the stairs\n" +
+            "Losing breath and looking for keys.\n" +
+
+            "Past the buildings, where sometime\n" +
+            "We danced and had fun and drank wine\n" +
+            "Past the white columns of Senate\n" +
+            "Where it's dark, dark again.\n" +
+
+            "What are you doing, you madman!\n" +
+            "No, I am only in love with thee!\n" +
+            "This evening is wide and noisy,\n" +
+            "Ship will have lots of fun at the sea!\n" +
+
+            "Horror tightly clutches the throat,\n" +
+            "Shuttle took us at dusk on our turn..\n" +
+            "The tough smell of ocean tightrope\n" +
+            "Inside trembling nostrils did burn.\n" +
+
+            "Say, you most probably know:\n" +
+            "I don't sleep? Thus in sleep it can be\n" +
+            "Only oars splashed in measured manner\n" +
+            "Over Nieva's waves heavy.\n" +
+
+            "And the black sky began to get lighter,\n" +
+            "Someone called from the bridge to us,\n" +
+            "As with both hands I was clutching\n" +
+            "On my chest the rim of the cross.\n" +
+
+            "On your arms, as I lost all my power,\n" +
+            "Like a little girl you carried me,\n" +
+            "That on deck of a yacht alabaster\n" +
+            "Incorruptible day's light we'd meet\n\n"};
 
     SolveTask1(String _dirPath, int _numberFile)
     {

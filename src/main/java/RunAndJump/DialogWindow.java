@@ -172,73 +172,73 @@ public class DialogWindow
             {
                 case 1:
                     message = "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Выберите директорию, в которой появятся два созданных файла.</html>";
-                    if (directoryChooser(message) == true)
+                    if (directoryChooser(message, true) == true)
                     {
-                        newDirectory = new File(MyData.path);
-                        if ((MyData.path!="") && (newDirectory.isDirectory() == true))
+                        newDirectory = new File(MyData.getPath());
+                        if ((MyData.getPath() != "") && (newDirectory.isDirectory() == true))
                         {
-                            SolveTask1 solveTask = new SolveTask1(MyData.path, 1);
-                            solveTask = new SolveTask1(MyData.path, 2);
+                            SolveTask1 solveTask = new SolveTask1(MyData.getPath(), 1);
+                            solveTask = new SolveTask1(MyData.getPath(), 2);
                             solveTask = null;
-                            JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">В директории<br>" + MyData.path + "<br>созданы 2 файла: task1_file1.txt и task1_file2.txt</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">В директории<br>" + MyData.getPath() + "<br>созданы 2 файла: task1_file1.txt и task1_file2.txt</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
                         }
                         else
                         {
-                            message = "Нужно выбрать папку. Пожалуйста, нажмите на кнопку \"Проверить задание\".";
+                            message = "Нужно выбрать папку. Пожалуйста, нажмите на кнопку \"Проверить задание\" ещё раз.";
                             JOptionPane.showMessageDialog(new JFrame(), message, "ОШИБКА", JOptionPane.ERROR_MESSAGE);
                         }
                     }
                     break;
                 case 2:
                     message = "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Выберите директорию, в которой появится файл с общей информацией.</html>";
-                    if (directoryChooser(message) == true)
+                    if (directoryChooser(message, true) == true)
                     {
-                        newDirectory = new File(MyData.path);
-                        if ((MyData.path!="") && (newDirectory.isDirectory() == true))
+                        newDirectory = new File(MyData.getPath());
+                        if ((MyData.getPath() != "") && (newDirectory.isDirectory() == true))
                         {
-                            SolveTask2 solveTask2 = new SolveTask2(MyData.path);
+                            SolveTask2 solveTask2 = new SolveTask2(MyData.getPath());
                             solveTask2 = null;
-                            JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">В директории<br>" + MyData.path + "<br>создан файл unionInformation.txt с информацией из файлов: task1_file1.txt и task1_file1.txt</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">В директории<br>" + MyData.getPath() + "<br>создан файл unionInformation.txt с информацией из файлов: task1_file1.txt и task1_file1.txt</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
                         }
                         else
                         {
-                            message = "Нужно выбрать папку. Пожалуйста, нажмите на кнопку \"Проверить задание\".";
+                            message = "Нужно выбрать папку. Пожалуйста, нажмите на кнопку \"Проверить задание\" ещё раз.";
                             JOptionPane.showMessageDialog(new JFrame(), message, "ОШИБКА", JOptionPane.ERROR_MESSAGE);
                         }
                     }
                     break;
                 case 3:
                     message = "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Выберите файл, в котором нужно произвести поиск слова " + textField_3.getText() + ".</html>";
-                    if (directoryChooser(message) == true)
+                    if (directoryChooser(message, false) == true)
                     {
-                        newDirectory = new File(MyData.path);
-                        if ((MyData.path!="") && (newDirectory.isDirectory() == true))
+                        newDirectory = new File(MyData.getPath());
+                        if ((MyData.getPath() != "") && (newDirectory.isFile() == true))
                         {
-                            SolveTask3 solveTask3 = new SolveTask3(MyData.path);
+                            SolveTask3 solveTask3 = new SolveTask3(MyData.getPath(), textField_3.getText());
                             solveTask3 = null;
-//                            JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">В директории<br>" + MyData.path + "<br>создан файл unionInformation.txt с информацией из файлов: task1_file1.txt и task1_file1.txt</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
+//                            JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">В директории<br>" + MyData.getPath() + "<br>создан файл unionInformation.txt с информацией из файлов: task1_file1.txt и task1_file1.txt</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
                         }
                         else
                         {
-                            message = "Нужно выбрать папку. Пожалуйста, нажмите на кнопку \"Проверить задание\".";
+                            message = "Нужно выбрать файл. Пожалуйста, нажмите на кнопку \"Проверить задание\" ещё раз.";
                             JOptionPane.showMessageDialog(new JFrame(), message, "ОШИБКА", JOptionPane.ERROR_MESSAGE);
                         }
                     }
                     break;
                 case 4:
                     message = "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Выберите директорию, в которой нужно произвести поиск слова " + textField_4.getText() + ".</html>";
-                    if (directoryChooser(message) == true)
+                    if (directoryChooser(message, true) == true)
                     {
-                        newDirectory = new File(MyData.path);
-                        if ((MyData.path!="") && (newDirectory.isDirectory() == true))
+                        newDirectory = new File(MyData.getPath());
+                        if ((MyData.getPath() != "") && (newDirectory.isDirectory() == true))
                         {
-                            SolveTask4 solveTask4 = new SolveTask4(MyData.path);
+                            SolveTask4 solveTask4 = new SolveTask4(MyData.getPath());
                             solveTask4 = null;
-//                            JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">В директории<br>" + MyData.path + "<br>создан файл unionInformation.txt с информацией из файлов: task1_file1.txt и task1_file1.txt</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
+//                            JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">В директории<br>" + MyData.getPath() + "<br>создан файл unionInformation.txt с информацией из файлов: task1_file1.txt и task1_file1.txt</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
                         }
                         else
                         {
-                            message = "Нужно выбрать папку. Пожалуйста, нажмите на кнопку \"Проверить задание\".";
+                            message = "Нужно выбрать папку. Пожалуйста, нажмите на кнопку \"Проверить задание\" ещё раз.";
                             JOptionPane.showMessageDialog(new JFrame(), message, "ОШИБКА", JOptionPane.ERROR_MESSAGE);
                         }
                     }
@@ -257,21 +257,34 @@ public class DialogWindow
             }
         }
 
-        public boolean directoryChooser(String message)
+        public boolean directoryChooser(String message, boolean directorySearch)
         {
             JOptionPane.showMessageDialog(new JFrame(), message, "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
-            JFileChooser chooser = new JFileChooser();
-            chooser.setCurrentDirectory(new java.io.File("."));
-            chooser.setDialogTitle("Укажите директорию");
-            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            chooser.setAcceptAllFileFilterUsed(false);
-            if (chooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
+            JFileChooser chooserDialog = new JFileChooser();
+            chooserDialog.setCurrentDirectory(new java.io.File("."));
+            if (directorySearch == true)
             {
-                System.out.println("Текущая директория: " + chooser.getSelectedFile());
-//                        MyData.path = "" + chooser.getCurrentDirectory(); // отслеживаем выбор выше стоящей директории
-                MyData.path = "" + chooser.getSelectedFile(); // отслеживаем выбор текущей директории
-//                System.out.println("Выбран текущий файл: " + chooser.getSelectedFile());
-//                MyData.path = "" + chooser.getSelectedFile(); // отслеживаем выбор файла
+                chooserDialog.setDialogTitle("Укажите директорию");
+                chooserDialog.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                chooserDialog.setAcceptAllFileFilterUsed(false);
+            }
+            else
+            {
+                chooserDialog.setDialogTitle("Укажите файл");
+                chooserDialog.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                chooserDialog.setAcceptAllFileFilterUsed(true);
+            }
+            if (chooserDialog.showOpenDialog(null) == JFileChooser.APPROVE_OPTION)
+            {
+                if (chooserDialog.getSelectedFile().isDirectory() == true)
+                {
+                    System.out.println("Текущая директория: " + chooserDialog.getSelectedFile());
+                }
+                else
+                {
+                    System.out.println("Текущий файл: " + chooserDialog.getSelectedFile());
+                }
+                MyData.setPath("" + chooserDialog.getSelectedFile()); // отслеживаем выбор текущей директории или файла
                 return true;
             }
             else
