@@ -1,6 +1,6 @@
 package RunAndJump;
 
-public class Wall
+public class Wall implements Barriers
 {
     float high;
     float maxHigh = 1.5f;
@@ -13,5 +13,10 @@ public class Wall
     public float getHigh()
     {
         return high;
+    }
+
+    public void setHigh(float high)
+    {
+        this.high = high;
     }
 }

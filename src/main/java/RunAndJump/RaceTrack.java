@@ -1,9 +1,9 @@
 package RunAndJump;
 
-public class RaceTrack
+public class RaceTrack implements Barriers
 {
     float distance;
-    float maxDistance;
+    float maxDistance = 200;
 
     RaceTrack()
     {
@@ -13,5 +13,10 @@ public class RaceTrack
     public float getDistance()
     {
         return distance;
+    }
+
+    public void setDistance(float distance)
+    {
+        this.distance = distance;
     }
 }

@@ -2,7 +2,7 @@ package RunAndJump;
 
 import javax.swing.*;
 
-public class Human
+public class Human implements Participators, Barriers
 {
     float limitHigh;
     float limitDistance;
@@ -48,31 +48,35 @@ public class Human
         JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">" + kind + " прыгнул на " + roundFloat(limitHigh) + " метров.</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public void runSolveTask6(RaceTrack newRaceTrack)
+    public boolean runSolveTask6(RaceTrack newRaceTrack)
     {
         if (newRaceTrack.distance <= maxDistance)
         {
             System.out.println(kind + " пробежал беговую дорожку длиною " + roundFloat(newRaceTrack.distance) + " метров.");
             JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">" + kind + " пробежал беговую дорожку длиною " + roundFloat(newRaceTrack.distance) + " метров.</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
+            return true;
         }
         else
         {
             System.out.println(kind + " не смог пробежать беговую дорожку длиною " + roundFloat(newRaceTrack.distance) + " метров.");
             JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">" + kind + " не смог пробежать беговую дорожку длиною " + roundFloat(newRaceTrack.distance) + " метров.</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
+            return false;
         }
     }
 
-    public void jumpSolveTask6(Wall newWall)
+    public boolean jumpSolveTask6(Wall newWall)
     {
         if (newWall.high <= maxHigh)
         {
             System.out.println(kind + " перепрыгнул стену высотой " + roundFloat(newWall.high) + " метров.");
             JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">" + kind + " перепрыгнул стену высотой " + roundFloat(newWall.high) + " метров.</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
+            return true;
         }
         else
         {
             System.out.println(kind + " не смог перепрыгнуть стену высотой " + roundFloat(newWall.high) + " метров.");
             JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">" + kind + " не смог перепрыгнуть стену высотой " + roundFloat(newWall.high) + " метров.</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
+            return false;
         }
     }
 

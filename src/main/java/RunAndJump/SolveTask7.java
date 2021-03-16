@@ -6,25 +6,36 @@ public class SolveTask7
 {
     SolveTask7()
     {
-    RaceTrack newRaceTrack = new RaceTrack();
-    Wall newWall = new Wall();
-    Human newHuman = new Human(7);
-    Cat newCat = new Cat(7);
-    Robot newRobot = new Robot(7);
 
-    System.out.println("Созданы два экземпляра класса: беговая дорожка (протяжённостью " + roundFloat(newRaceTrack.getDistance()) + " метров) и стена (высотой " + roundFloat(newWall.getHigh()) + " метров).");
-    JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Созданы два класса: беговая дорожка (протяжённостью " + roundFloat(newRaceTrack.getDistance()) + " метров) и стена (высотой " + roundFloat(newWall.getHigh()) + " метров).</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
+        Barriers[] barriers = new Barriers[4];
+        barriers[0] = new Wall();
+        barriers[1] = new RaceTrack();
+        barriers[2] = new Wall();
+        barriers[3] = new RaceTrack();
 
-    newHuman.jumpSolveTask6(newWall);
-    newHuman.runSolveTask6(newRaceTrack);
-    newCat.jumpSolveTask6(newWall);
-    newCat.runSolveTask6(newRaceTrack);
-    newRobot.jumpSolveTask6(newWall);
-    newRobot.runSolveTask6(newRaceTrack);
-    }
+        Participators[] participators = new Participators[3];
+        participators[0] = new Cat(7);
+        participators[1] = new Human(7);
+        participators[2] = new Robot(7);
 
-    public String roundFloat(float number)
-    {
-        return String.format("%(.1f", number);
+        RaceTrack newRaceTrack = new RaceTrack();
+        Wall newWall = new Wall();
+
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                if (barriers[j] instanceof Wall)
+                {
+                    newWall.high = barriers[j].high;
+                    participators[i].jumpSolveTask6(newWall);
+                }
+                else
+                {
+                    newRaceTrack.distance = barriers[j].distance;
+                    participators[i].runSolveTask6(newRaceTrack);
+                }
+            }
+        }
     }
 }
