@@ -78,7 +78,7 @@ public class SolveTask1
         FileOutputStream fileOutputStream;
         if (!file.exists())
         {
-            JOptionPane.showMessageDialog(new JFrame(), "Директория не существует. Пожалуйста, укажите существующую директорию.", "ОШИБКА", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Директория не существует. Пожалуйста, укажите существующую директорию.</html>", "ОШИБКА", JOptionPane.ERROR_MESSAGE);
         }
         else
         {
@@ -92,7 +92,7 @@ public class SolveTask1
             catch (Exception e)
             {
                 System.out.println(e.getMessage());
-                JOptionPane.showMessageDialog(new JFrame(), "Невозможно создать файл " + (dirPath + "\\task1_file" + numberFile + ".txt") + ".", "ОШИБКА", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Невозможно создать файл " + (dirPath + "\\task1_file" + numberFile + ".txt") + ".</html>", "ОШИБКА", JOptionPane.ERROR_MESSAGE);
             }
         }
     }

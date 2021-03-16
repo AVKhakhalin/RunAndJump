@@ -18,7 +18,7 @@ public class SolveTask3
         if ((wordToSearch == null) || (wordToSearch.isEmpty() == true))
         {
             System.out.println("ОШИБКА: Слово для поиска не задано. Нужно обязательно ввести слово для поиска. Попробуйте ещё раз.");
-            JOptionPane.showMessageDialog(new JFrame(), "Слово для поиска не задано. Нужно обязательно ввести слово для поиска. Попробуйте ещё раз.", "ОШИБКА!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Слово для поиска не задано. Нужно обязательно ввести слово для поиска. Попробуйте ещё раз.</html>", "ОШИБКА!", JOptionPane.ERROR_MESSAGE);
         }
         else
         {
@@ -26,7 +26,7 @@ public class SolveTask3
             if (!file.exists())
             {
                 System.out.println("ОШИБКА: Файл не существует. Пожалуйста, укажите существующий файл.");
-                JOptionPane.showMessageDialog(new JFrame(), "Файл не существует. Пожалуйста, укажите существующий файл.", "ОШИБКА!", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Файл не существует. Пожалуйста, укажите существующий файл.</html>", "ОШИБКА!", JOptionPane.ERROR_MESSAGE);
             }
             else
             {
@@ -58,19 +58,19 @@ public class SolveTask3
                     }
                     if (result.length() == 0)
                     {
-                        System.out.println("В файле " + filePath + "\nнет слова \"" + wordToSearch + "\".");
-                        JOptionPane.showMessageDialog(new JFrame(),"В файле " + filePath + "\nнет слова \"" + wordToSearch + "\".", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
+                        System.out.println("В файле \"" + filePath + "\"\nнет слова \"" + wordToSearch + "\".");
+                        JOptionPane.showMessageDialog(new JFrame(),"<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">В файле " + filePath + "<br>нет слова \"" + wordToSearch + "\".</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
                     }
                     else
                     {
-                        System.out.println("В файле " + filePath + "\nслово \"" + wordToSearch + "\" присутствует " + (numberFoundedWords == 1 ? "на позиции " : "на позициях: ") + result + ".");
-                        JOptionPane.showMessageDialog(new JFrame(),"В файле " + filePath + "\nслово " + wordToSearch + " присутствует " + (numberFoundedWords == 1 ? "на позиции " : "на позициях: ") + result + ".", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
+                        System.out.println("В файле \"" + filePath + "\"\nслово \"" + wordToSearch + "\" присутствует " + (numberFoundedWords == 1 ? "на позиции " : "на позициях: ") + result + ".");
+                        JOptionPane.showMessageDialog(new JFrame(),"<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">В файле \"" + filePath + "\"<br>слово " + wordToSearch + " присутствует " + (numberFoundedWords == 1 ? "на позиции " : "на позициях: ") + result + ".</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
                 catch (Exception e)
                 {
                     System.out.println(e.getMessage());
-                    JOptionPane.showMessageDialog(new JFrame(), "Невозможно открыть файл " + filePath + ".", "ОШИБКА", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Невозможно открыть файл \"" + filePath + "\".</html>", "ОШИБКА", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }

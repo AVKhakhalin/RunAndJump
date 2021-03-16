@@ -184,7 +184,7 @@ public class DialogWindow
                         }
                         else
                         {
-                            message = "Нужно выбрать папку. Пожалуйста, нажмите на кнопку \"Проверить задание\" ещё раз.";
+                            message = "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Нужно выбрать папку. Пожалуйста, нажмите на кнопку \"Проверить задание\" ещё раз.</html>";
                             JOptionPane.showMessageDialog(new JFrame(), message, "ОШИБКА", JOptionPane.ERROR_MESSAGE);
                         }
                     }
@@ -202,7 +202,7 @@ public class DialogWindow
                         }
                         else
                         {
-                            message = "Нужно выбрать папку. Пожалуйста, нажмите на кнопку \"Проверить задание\" ещё раз.";
+                            message = "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Нужно выбрать папку. Пожалуйста, нажмите на кнопку \"Проверить задание\" ещё раз.</html>";
                             JOptionPane.showMessageDialog(new JFrame(), message, "ОШИБКА", JOptionPane.ERROR_MESSAGE);
                         }
                     }
@@ -220,7 +220,7 @@ public class DialogWindow
                         }
                         else
                         {
-                            message = "Нужно выбрать файл. Пожалуйста, нажмите на кнопку \"Проверить задание\" ещё раз.";
+                            message = "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Нужно выбрать файл. Пожалуйста, нажмите на кнопку \"Проверить задание\" ещё раз.</html>";
                             JOptionPane.showMessageDialog(new JFrame(), message, "ОШИБКА", JOptionPane.ERROR_MESSAGE);
                         }
                     }
@@ -238,18 +238,22 @@ public class DialogWindow
                         }
                         else
                         {
-                            message = "Нужно выбрать папку. Пожалуйста, нажмите на кнопку \"Проверить задание\" ещё раз.";
+                            message = "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Нужно выбрать папку. Пожалуйста, нажмите на кнопку \"Проверить задание\" ещё раз.</html>";
                             JOptionPane.showMessageDialog(new JFrame(), message, "ОШИБКА", JOptionPane.ERROR_MESSAGE);
                         }
                     }
                     break;
                 case 5:
+                    SolveTask5 solveTask5 = new SolveTask5();
                     break;
                 case 6:
+                    SolveTask6 solveTask6 = new SolveTask6();
                     break;
                 case 7:
+                    SolveTask7 solveTask7 = new SolveTask7();
                     break;
                 case 8:
+                    SolveTask8 solveTask8 = new SolveTask8();
                     break;
                 default:
                     System.exit(0);

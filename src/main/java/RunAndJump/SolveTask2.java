@@ -15,7 +15,7 @@ public class SolveTask2
         SolveTask1 solveTask;
         if (!file.exists())
         {
-            JOptionPane.showMessageDialog(new JFrame(), "Директория не существует. Пожалуйста, укажите существующую директорию.", "ОШИБКА!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Директория не существует. Пожалуйста, укажите существующую директорию.</html>", "ОШИБКА!", JOptionPane.ERROR_MESSAGE);
         }
         else
         {
@@ -38,7 +38,7 @@ public class SolveTask2
                 else
                 {
                     System.out.println("В указанной директории уже существует файл \"unionInformation.txt\". Удалить его не получается.");
-                    JOptionPane.showMessageDialog(new JFrame(), "В указанной директории уже существует файл unionInformation.txt. Удалить его не получается.", "ОШИБКА", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">В указанной директории уже существует файл unionInformation.txt. Удалить его не получается.</html>", "ОШИБКА", JOptionPane.ERROR_MESSAGE);
                 }
             }
 
@@ -56,7 +56,7 @@ public class SolveTask2
                 catch (Exception e)
                 {
                     System.out.println(e.getMessage());
-                    JOptionPane.showMessageDialog(new JFrame(), "Невозможно открыть файл " + (dirPath + "\\task1_file" + i + ".txt") + " или создать для записи файл " + (dirPath + "\\unionInformation.txt") + ".", "ОШИБКА", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Невозможно открыть файл " + (dirPath + "\\task1_file" + i + ".txt") + " или создать для записи файл " + (dirPath + "\\unionInformation.txt") + ".</html>", "ОШИБКА", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }

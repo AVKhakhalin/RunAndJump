@@ -20,7 +20,7 @@ public class SolveTask4
         File checkDir = new File(dirPath);
         if (!checkDir.exists())
         {
-            JOptionPane.showMessageDialog(new JFrame(), "Директория не существует. Пожалуйста, укажите существующую директорию.", "ОШИБКА!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Директория не существует. Пожалуйста, укажите существующую директорию.</html>", "ОШИБКА!", JOptionPane.ERROR_MESSAGE);
         }
         else
         {
@@ -33,7 +33,8 @@ public class SolveTask4
             String result;
             String[] fileWords;
             String fullBuffer;
-            String otchet = "";
+            String otchet_out = "";
+            String otchet_mes = "";
             int numberFoundedWords;
             int numberFoundedFilesWithWord = 0;
             if (existFiles != null)
@@ -64,34 +65,37 @@ public class SolveTask4
                                 }
                             }
                         }
-                        if ((result.length() != 0) && (otchet.length() == 0))
+                        if ((result.length() != 0) && (otchet_out.length() == 0))
                         {
                             numberFoundedFilesWithWord++;
-                            otchet = "В директории " + dirPath + "\nнайдены следующие файлы со словом " + wordToSearch + ":";
-                            otchet += "\n" + numberFoundedFilesWithWord + ". В файле " + curFile.getAbsolutePath() + " слово \"" + wordToSearch + "\" присутствует " + (numberFoundedWords == 1 ? "на позиции " : "на позициях: ") + result + ".";
+                            otchet_out = "В директории " + dirPath + "\nнайдены следующие файлы со словом " + wordToSearch + ":";
+                            otchet_out += "\n" + numberFoundedFilesWithWord + ". В файле \"" + curFile.getAbsolutePath() + "\"\nслово \"" + wordToSearch + "\" присутствует " + (numberFoundedWords == 1 ? "на позиции " : "на позициях: ") + result + ".";
+                            otchet_mes = "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">В директории \"" + dirPath + "\"<br>найдены следующие файлы со словом " + wordToSearch + ":";
+                            otchet_mes += "<br>" + numberFoundedFilesWithWord + ". В файле \"" + curFile.getAbsolutePath() + "<br> слово \"" + wordToSearch + "\" присутствует " + (numberFoundedWords == 1 ? "на позиции " : "на позициях: ") + result + ".";
                         }
                         else if (result.length() != 0)
                         {
                             numberFoundedFilesWithWord++;
-                            otchet += "\n" + numberFoundedFilesWithWord + ". В файле " + curFile.getAbsolutePath() + " слово \"" + wordToSearch + "\" присутствует " + (numberFoundedWords == 1 ? "на позиции " : "на позициях: ") + result + ".";
+                            otchet_out += "\n" + numberFoundedFilesWithWord + ". В файле \"" + curFile.getAbsolutePath() + "\"\nслово \"" + wordToSearch + "\" присутствует " + (numberFoundedWords == 1 ? "на позиции " : "на позициях: ") + result + ".";
+                            otchet_mes += "<br>" + numberFoundedFilesWithWord + ". В файле \"" + curFile.getAbsolutePath() + "\"<br>слово \"" + wordToSearch + "\" присутствует " + (numberFoundedWords == 1 ? "на позиции " : "на позициях: ") + result + ".";
                         }
                     }
                     catch (Exception e)
                     {
                         System.out.println(e.getMessage());
-                        JOptionPane.showMessageDialog(new JFrame(), "Невозможно открыть файл " + curFile + ".", "ОШИБКА", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Невозможно открыть файл " + curFile + ".</html>", "ОШИБКА", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
-            if (otchet.length() == 0)
+            if (otchet_out.length() == 0)
             {
                 System.out.println("В директории " + dirPath + " нет файлов, содержащих слово \"" + wordToSearch + "\".");
-                JOptionPane.showMessageDialog(new JFrame(), "В директории " + dirPath + " нет файлов, содержащих слово \"" + wordToSearch + "\".", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">В директории " + dirPath + " нет файлов, содержащих слово \"" + wordToSearch + "\".</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
             }
             else
             {
-                System.out.println(otchet);
-                JOptionPane.showMessageDialog(new JFrame(), otchet, "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
+                System.out.println(otchet_out);
+                JOptionPane.showMessageDialog(new JFrame(), otchet_mes, "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
             }
         }
     }
