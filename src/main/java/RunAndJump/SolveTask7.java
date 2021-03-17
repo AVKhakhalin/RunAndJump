@@ -4,38 +4,68 @@ import javax.swing.*;
 
 public class SolveTask7
 {
-    SolveTask7()
+    int numberParticipators;
+    int numberBarriers;
+
+    SolveTask7(int _numberParticipators, int _numberBarriers)
     {
+        this.numberParticipators = _numberParticipators;
+        this.numberBarriers = _numberBarriers;
 
-        Barriers[] barriers = new Barriers[4];
-        barriers[0] = new Wall();
-        barriers[1] = new RaceTrack();
-        barriers[2] = new Wall();
-        barriers[3] = new RaceTrack();
+        int tempRandom = 0;
+        Participators[] participators = new Participators[numberParticipators];
+        for (int i = 0; i < numberParticipators; i++)
+        {
+            tempRandom = (int) Math.round(Math.random() * 2);
+            if (tempRandom == 0)
+            {
+                participators[i] = new Human(7);
+            }
+            else if (tempRandom == 1)
+            {
+                participators[i] = new Cat(7);
+            }
+            else
+            {
+                participators[i] = new Robot(7);
+            }
+        }
 
-        Participators[] participators = new Participators[3];
-        participators[0] = new Cat(7);
-        participators[1] = new Human(7);
-        participators[2] = new Robot(7);
+        Barriers[] barriers = new Barriers[numberBarriers];
+        for (int i = 0; i < numberBarriers; i++)
+        {
+            if (Math.round(Math.random()) == 0)
+            {
+                barriers[i] = new Wall();
+            }
+            else
+            {
+                barriers[i] = new RaceTrack();
+            }
+        }
 
         RaceTrack newRaceTrack = new RaceTrack();
         Wall newWall = new Wall();
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < numberParticipators; i++)
         {
-            for (int j = 0; j < 4; j++)
+            System.out.println("Лимит высоты участника = " + roundFloat(participators[i].getLimitHigh()) + "; лимит расстояния участника = " + roundFloat(participators[i].getLimitDistance()));
+            for (int j = 0; j < numberBarriers; j++)
             {
                 if (barriers[j] instanceof Wall)
                 {
-                    newWall.high = barriers[j].high;
-                    participators[i].jumpSolveTask6(newWall);
+                    participators[i].jumpSolveTask6(barriers[j]);
                 }
-                else
+                else if (barriers[j] instanceof RaceTrack)
                 {
-                    newRaceTrack.distance = barriers[j].distance;
-                    participators[i].runSolveTask6(newRaceTrack);
+                    participators[i].runSolveTask6(barriers[j]);
                 }
             }
         }
+    }
+
+    public String roundFloat(float number)
+    {
+        return String.format("%(.1f", number);
     }
 }

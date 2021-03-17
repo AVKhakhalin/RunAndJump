@@ -19,6 +19,10 @@ public class DialogWindow
 
     public JTextField textField_3;
     public JTextField textField_4;
+    public JTextField textField_7_1;
+    public JTextField textField_7_2;
+    public JTextField textField_8_1;
+    public JTextField textField_8_2;
 
     DialogWindow (int _sizeWidth, int _sizeHeight)
     {
@@ -57,7 +61,7 @@ public class DialogWindow
 
         // Создание кнопки для задания №1
         JButton task_1_button = new JButton("Проверить задание");
-        task_1_button.setToolTipText("Нажмите для проверки задания №1");
+        task_1_button.setToolTipText("<html>Нажмите для проверки задания №1</html>");
         task_1_button.setLocation(700, 80); // это координаты кнопки
         task_1_button.setSize(150,40 ); // это размер кнопки
         totalGUI.add(task_1_button);
@@ -66,7 +70,7 @@ public class DialogWindow
 
         // Создание кнопки для задания №2
         JButton task_2_button = new JButton("Проверить задание");
-        task_2_button.setToolTipText("Нажмите для проверки задания №2");
+        task_2_button.setToolTipText("<html>Нажмите для проверки задания №2</html>");
         task_2_button.setLocation(700, 150); // это координаты кнопки
         task_2_button.setSize(150,40 ); // это размер кнопки
         totalGUI.add(task_2_button);
@@ -75,7 +79,7 @@ public class DialogWindow
 
         // Создание кнопки для задания №3
         JButton task_3_button = new JButton("Проверить задание");
-        task_3_button.setToolTipText("Нажмите для проверки задания №3");
+        task_3_button.setToolTipText("<html>Нажмите для проверки задания №3</html>");
         task_3_button.setLocation(700, 220); // это координаты кнопки
         task_3_button.setSize(150,40 ); // это размер кнопки
         totalGUI.add(task_3_button);
@@ -91,7 +95,7 @@ public class DialogWindow
 
         // Создание кнопки для задания №4
         JButton task_4_button = new JButton("Проверить задание");
-        task_4_button.setToolTipText("Нажмите для проверки задания №4");
+        task_4_button.setToolTipText("<html>Нажмите для проверки задания №4</html>");
         task_4_button.setLocation(700, 290); // это координаты кнопки
         task_4_button.setSize(150,40 ); // это размер кнопки
         totalGUI.add(task_4_button);
@@ -107,7 +111,7 @@ public class DialogWindow
 
         // Создание кнопки для задания №5
         JButton task_5_button = new JButton("Проверить задание");
-        task_5_button.setToolTipText("Нажмите для проверки задания №5");
+        task_5_button.setToolTipText("<html>Нажмите для проверки задания №5</html>");
         task_5_button.setLocation(700, 390); // это координаты кнопки
         task_5_button.setSize(150,40 ); // это размер кнопки
         totalGUI.add(task_5_button);
@@ -116,7 +120,7 @@ public class DialogWindow
 
         // Создание кнопки для задания №6
         JButton task_6_button = new JButton("Проверить задание");
-        task_6_button.setToolTipText("Нажмите для проверки задания №6");
+        task_6_button.setToolTipText("<html>Нажмите для проверки задания №6</html>");
         task_6_button.setLocation(700, 510); // это координаты кнопки
         task_6_button.setSize(150,40 ); // это размер кнопки
         totalGUI.add(task_6_button);
@@ -125,25 +129,53 @@ public class DialogWindow
 
         // Создание кнопки для задания №7
         JButton task_7_button = new JButton("Проверить задание");
-        task_7_button.setToolTipText("Нажмите для проверки задания №7");
+        task_7_button.setToolTipText("<html>Нажмите для проверки задания №7<br>(количества препятствий и участников<br>должны быть установлены)</html>");
         task_7_button.setLocation(700, 580); // это координаты кнопки
         task_7_button.setSize(150,40 ); // это размер кнопки
         totalGUI.add(task_7_button);
         ActionListener actionListener7 = new TestActionListener(7); // Подключение обработчика событий к кнопке
         task_7_button.addActionListener(actionListener7);
 
+        // Создание текстового поля для ввода размера массива участников для задания №7
+        textField_7_1 = new JTextField(15);
+        textField_7_1.setToolTipText("<html>Введите количество УЧАСТНИКОВ<br>для проверки задания №7</html>");
+        textField_7_1.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,16));
+        textField_7_1.setBounds(600, 580, 30, 30);
+        totalGUI.add(textField_7_1);
+
+        // Создание текстового поля для ввода размера массива участников для задания №7
+        textField_7_2 = new JTextField(15);
+        textField_7_2.setToolTipText("<html>Введите количество ПРЕПЯТСТВИЙ<br>для проверки задания №7</html>");
+        textField_7_2.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,16));
+        textField_7_2.setBounds(650, 580, 30, 30);
+        totalGUI.add(textField_7_2);
+
         // Создание кнопки для задания №8
         JButton task_8_button = new JButton("Проверить задание");
-        task_8_button.setToolTipText("Нажмите для проверки задания №8");
+        task_8_button.setToolTipText("<html>Нажмите для проверки задания №8<br>(количества препятствий и участников<br>должны быть установлены)</html>");
         task_8_button.setLocation(700, 680); // это координаты кнопки
         task_8_button.setSize(150,40 ); // это размер кнопки
         totalGUI.add(task_8_button);
         ActionListener actionListener8 = new TestActionListener(8); // Подключение обработчика событий к кнопке
         task_8_button.addActionListener(actionListener8);
 
+        // Создание текстового поля для ввода размера массива участников для задания №8
+        textField_8_1 = new JTextField(15);
+        textField_8_1.setToolTipText("<html>Введите количество УЧАСТНИКОВ<br>для проверки задания №8</html>");
+        textField_8_1.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,16));
+        textField_8_1.setBounds(600, 680, 30, 30);
+        totalGUI.add(textField_8_1);
+
+        // Создание текстового поля для ввода размера массива участников для задания №8
+        textField_8_2 = new JTextField(15);
+        textField_8_2.setToolTipText("<html>Введите количество ПРЕПЯТСТВИЙ<br>для проверки задания №8</html>");
+        textField_8_2.setFont(new Font(Font.SANS_SERIF,Font.PLAIN,16));
+        textField_8_2.setBounds(650, 680, 30, 30);
+        totalGUI.add(textField_8_2);
+
         // Создание кнопки для выхода из программы
         JButton task_EXIT_button = new JButton("Выйти из программы");
-        task_EXIT_button.setToolTipText("Нажмите для выхода из программы");
+        task_EXIT_button.setToolTipText("<html>Нажмите для выхода из программы</html>");
         task_EXIT_button.setLocation((int) (sizeWidth / 2 - 80), sizeHeight - 98); // это координаты кнопки
         task_EXIT_button.setSize(160,40 ); // это размер кнопки
         totalGUI.add(task_EXIT_button);
@@ -208,39 +240,53 @@ public class DialogWindow
                     }
                     break;
                 case 3:
-                    message = "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Выберите файл, в котором нужно произвести поиск слова " + textField_3.getText() + ".</html>";
-                    if (directoryChooser(message, false) == true)
+                    if ((textField_3.getText() != null) && (textField_3.getText().length() != 0))
                     {
-                        newDirectory = new File(MyData.getPath());
-                        if ((MyData.getPath() != "") && (newDirectory.isFile() == true))
+                        message = "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Выберите файл, в котором нужно произвести поиск слова " + textField_3.getText() + ".</html>";
+                        if (directoryChooser(message, false) == true)
                         {
-                            SolveTask3 solveTask3 = new SolveTask3(MyData.getPath(), textField_3.getText());
-                            solveTask3 = null;
-//                            JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">В директории<br>" + MyData.getPath() + "<br>создан файл unionInformation.txt с информацией из файлов: task1_file1.txt и task1_file1.txt</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
+                            newDirectory = new File(MyData.getPath());
+                            if ((MyData.getPath() != "") && (newDirectory.isFile() == true))
+                            {
+                                SolveTask3 solveTask3 = new SolveTask3(MyData.getPath(), textField_3.getText());
+                                solveTask3 = null;
+                            }
+                            else
+                            {
+                                message = "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Нужно выбрать файл. Пожалуйста, нажмите на кнопку \"Проверить задание\" ещё раз.</html>";
+                                JOptionPane.showMessageDialog(new JFrame(), message, "ОШИБКА", JOptionPane.ERROR_MESSAGE);
+                            }
                         }
-                        else
-                        {
-                            message = "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Нужно выбрать файл. Пожалуйста, нажмите на кнопку \"Проверить задание\" ещё раз.</html>";
-                            JOptionPane.showMessageDialog(new JFrame(), message, "ОШИБКА", JOptionPane.ERROR_MESSAGE);
-                        }
+                    }
+                    else
+                    {
+                        message = "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Нужно сначала обязательно указать слово для поиска.<br>Укажите его и нажмите на кнопку \"Проверить задание\" ещё раз.</html>";
+                        JOptionPane.showMessageDialog(new JFrame(), message, "ОШИБКА", JOptionPane.ERROR_MESSAGE);
                     }
                     break;
                 case 4:
-                    message = "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Выберите директорию, в которой нужно произвести поиск слова " + textField_4.getText() + ".</html>";
-                    if (directoryChooser(message, true) == true)
+                    if ((textField_4.getText() != null) && (textField_4.getText().length() != 0))
                     {
-                        newDirectory = new File(MyData.getPath());
-                        if ((MyData.getPath() != "") && (newDirectory.isDirectory() == true))
+                        message = "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Выберите директорию, в которой нужно произвести поиск слова " + textField_4.getText() + ".</html>";
+                        if (directoryChooser(message, true) == true)
                         {
-                            SolveTask4 solveTask4 = new SolveTask4(MyData.getPath(), textField_4.getText());
-                            solveTask4 = null;
-//                            JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">В директории<br>" + MyData.getPath() + "<br>создан файл unionInformation.txt с информацией из файлов: task1_file1.txt и task1_file1.txt</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
+                            newDirectory = new File(MyData.getPath());
+                            if ((MyData.getPath() != "") && (newDirectory.isDirectory() == true))
+                            {
+                                SolveTask4 solveTask4 = new SolveTask4(MyData.getPath(), textField_4.getText());
+                                solveTask4 = null;
+                            }
+                            else
+                            {
+                                message = "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Нужно выбрать папку. Пожалуйста, нажмите на кнопку \"Проверить задание\" ещё раз.</html>";
+                                JOptionPane.showMessageDialog(new JFrame(), message, "ОШИБКА", JOptionPane.ERROR_MESSAGE);
+                            }
                         }
-                        else
-                        {
-                            message = "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Нужно выбрать папку. Пожалуйста, нажмите на кнопку \"Проверить задание\" ещё раз.</html>";
-                            JOptionPane.showMessageDialog(new JFrame(), message, "ОШИБКА", JOptionPane.ERROR_MESSAGE);
-                        }
+                    }
+                    else
+                    {
+                        message = "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Нужно сначала обязательно указать слово для поиска.<br>Укажите его и нажмите на кнопку \"Проверить задание\" ещё раз.</html>";
+                        JOptionPane.showMessageDialog(new JFrame(), message, "ОШИБКА", JOptionPane.ERROR_MESSAGE);
                     }
                     break;
                 case 5:
@@ -250,10 +296,50 @@ public class DialogWindow
                     SolveTask6 solveTask6 = new SolveTask6();
                     break;
                 case 7:
-                    SolveTask7 solveTask7 = new SolveTask7();
+                    if ((textField_7_1.getText() != null) && (textField_7_1.getText().length() != 0) && (textField_7_2.getText() != null) && (textField_7_2.getText().length() != 0))
+                    {
+                        try
+                        {
+                            int numberParticipators = Integer.parseInt(textField_7_1.getText().trim());
+                            int numberBarriers = Integer.parseInt(textField_7_2.getText().trim());
+                            SolveTask7 solveTask7 = new SolveTask7(numberParticipators, numberBarriers);
+                        }
+                        catch (NumberFormatException nfe)
+                        {
+                            System.out.println("ОШИБКА: Введённые значения не являются целыми числами!\nПожалуйста, введите целое количество участников и преград.");
+                            message = "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Введённые значения не являются целыми числами.<br>Пожалуйста, введие целое количество участников и преград,<br>потом нажмите на кнопку \"Проверить задание\" ещё раз.</html>";
+                            JOptionPane.showMessageDialog(new JFrame(), message, "ОШИБКА", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                    else
+                    {
+                        System.out.println("ОШИБКА: Для проверки задания №7 нужно ввести целые значения количества участников и преград.");
+                        message = "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Для проверки задания №7 нужно ввести целы значения<br>количества участников и преград.</html>";
+                        JOptionPane.showMessageDialog(new JFrame(), message, "ОШИБКА", JOptionPane.ERROR_MESSAGE);
+                    }
                     break;
                 case 8:
-                    SolveTask8 solveTask8 = new SolveTask8();
+                    if ((textField_8_1.getText() != null) && (textField_8_1.getText().length() != 0) && (textField_8_2.getText() != null) && (textField_8_2.getText().length() != 0))
+                    {
+                        try
+                        {
+                            int numberParticipators = Integer.parseInt(textField_8_1.getText().trim());
+                            int numberBarriers = Integer.parseInt(textField_8_2.getText().trim());
+                            SolveTask8 solveTask8 = new SolveTask8(numberParticipators, numberBarriers);
+                        }
+                        catch (NumberFormatException nfe)
+                        {
+                            System.out.println("ОШИБКА: Введённые значения не являются целыми числами!\nПожалуйста, введите целое количество участников и преград.");
+                            message = "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Введённые значения не являются целыми числами.<br>Пожалуйста, введие целое количество участников и преград,<br>потом нажмите на кнопку \"Проверить задание\" ещё раз.</html>";
+                            JOptionPane.showMessageDialog(new JFrame(), message, "ОШИБКА", JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                    else
+                    {
+                        System.out.println("ОШИБКА: Для проверки задания №8 нужно ввести целые значения количества участников и преград.");
+                        message = "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Для проверки задания №8 нужно ввести целы значения<br>количества участников и преград.</html>";
+                        JOptionPane.showMessageDialog(new JFrame(), message, "ОШИБКА", JOptionPane.ERROR_MESSAGE);
+                    }
                     break;
                 default:
                     System.exit(0);

@@ -21,8 +21,6 @@ public class SolveTask6
         newCat.runSolveTask6(newRaceTrack);
         newRobot.jumpSolveTask6(newWall);
         newRobot.runSolveTask6(newRaceTrack);
-
-
     }
 
     public String roundFloat(float number)

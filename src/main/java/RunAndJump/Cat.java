@@ -7,8 +7,10 @@ public class Cat implements Participators, Barriers
     float limitHigh;
     float limitDistance;
 
-    float maxHigh = 2.5f;
-    float maxDistance = 300f;
+//    float maxHigh = 2.5f;
+//    float maxDistance = 300f;
+    float maxHigh = 1f;
+    float maxDistance = 100f;
     String kind = "Кот";
 
     private Wall newWall;
@@ -48,34 +50,52 @@ public class Cat implements Participators, Barriers
         JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">" + kind + " прыгнул на " + roundFloat(limitHigh) + " метров.</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public boolean runSolveTask6(RaceTrack newRaceTrack)
+    @Override
+    public boolean runSolveTask6(Barriers newRaceTrack)
     {
-        if (newRaceTrack.distance <= maxDistance)
+        if (newRaceTrack instanceof RaceTrack)
         {
-            System.out.println(kind + " пробежал беговую дорожку длиною " + roundFloat(newRaceTrack.distance) + " метров.");
-            JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">" + kind + " пробежал беговую дорожку длиною " + roundFloat(newRaceTrack.distance) + " метров.</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
-            return true;
+            if (newRaceTrack.getBarrier() <= limitDistance)
+            {
+                System.out.println("     " + kind + " пробежал беговую дорожку длиною " + roundFloat(newRaceTrack.getBarrier()) + " м.");
+                JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Лимит высоты участника = " + roundFloat(limitHigh) + " м; лимит расстояния участника = " + roundFloat(limitDistance) + " м.<br>" + kind + " пробежал беговую дорожку длиною " + roundFloat(newRaceTrack.getBarrier()) + " м.</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
+                return true;
+            }
+            else
+            {
+                System.out.println("     " + kind + " не смог пробежать беговую дорожку длиною " + roundFloat(newRaceTrack.getBarrier()) + " м.");
+                JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Лимит высоты участника = " + roundFloat(limitHigh) + " м; лимит расстояния участника = " + roundFloat(limitDistance) + " м.<br>" + kind + " не смог пробежать беговую дорожку длиною " + roundFloat(newRaceTrack.getBarrier()) + " м.</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
+                return false;
+            }
         }
         else
         {
-            System.out.println(kind + " не смог пробежать беговую дорожку длиною " + roundFloat(newRaceTrack.distance) + " метров.");
-            JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">" + kind + " не смог пробежать беговую дорожку длиною " + roundFloat(newRaceTrack.distance) + " метров.</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
             return false;
         }
     }
 
-    public boolean jumpSolveTask6(Wall newWall)
+    @Override
+    public boolean jumpSolveTask6(Barriers newWall)
     {
-        if (newWall.high <= maxHigh)
+        if (newWall instanceof Wall)
         {
-            System.out.println(kind + " перепрыгнул стену высотой " + roundFloat(newWall.high) + " метров.");
-            JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">" + kind + " перепрыгнул стену высотой " + roundFloat(newWall.high) + " метров.</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
-            return true;
+            if (newWall.getBarrier() <= limitHigh)
+            {
+                System.out.println("     " + kind + " перепрыгнул стену высотой " + roundFloat(newWall.getBarrier()) + " м.");
+                JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Лимит высоты участника = " + roundFloat(limitHigh) + " м; лимит расстояния участника = " + roundFloat(limitDistance) + " м.<br>" + kind + " перепрыгнул стену высотой " + roundFloat(newWall.getBarrier()) + " м.</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
+                return true;
+            }
+            else
+            {
+                System.out.println("     " + kind + " не смог перепрыгнуть стену высотой " + roundFloat(newWall.getBarrier()) + " м.");
+                JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">Лимит высоты участника = " + roundFloat(limitHigh) + " м; лимит расстояния участника = " + roundFloat(limitDistance) + " м.<br>" + kind + " не смог перепрыгнуть стену высотой " + roundFloat(newWall.getBarrier()) + " м.</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
+
+
+                return false;
+            }
         }
         else
         {
-            System.out.println(kind + " не смог перепрыгнуть стену высотой " + roundFloat(newWall.high) + " метров.");
-            JOptionPane.showMessageDialog(new JFrame(), "<html><font face=\"MyFont, Verdana, Arial\", size=\"4\">" + kind + " не смог перепрыгнуть стену высотой " + roundFloat(newWall.high) + " метров.</html>", "ИНФОРМАЦИЯ", JOptionPane.INFORMATION_MESSAGE);
             return false;
         }
     }
@@ -93,5 +113,20 @@ public class Cat implements Participators, Barriers
     public String roundFloat(float number)
     {
         return String.format("%(.1f", number);
+    }
+
+    public float getLimitHigh()
+    {
+        return limitHigh;
+    }
+
+    public float getLimitDistance()
+    {
+        return limitDistance;
+    }
+
+    public float getBarrier()
+    {
+        return 0f;
     }
 }
